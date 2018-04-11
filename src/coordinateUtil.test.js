@@ -43,4 +43,110 @@ describe('coordinateUtil', () => {
       });
     });
   });
+
+  describe('arrayIncludesCoordinates', () => {
+    it('should return true array contains coordinates', () => {
+      const coordinate = {
+        x: 1,
+        y: 2
+      };
+
+      const coordinateArr = [
+        { x: 2, y: 3 },
+        { x: 1, y: 2 }
+      ];
+
+      const result = coordinateUtil.arrayIncludesCoordinate(coordinate, coordinateArr);
+
+      expect(result).toBeTruthy();
+    });
+
+    it('should return false array contains coordinates', () => {
+      const coordinate = {
+        x: 1,
+        y: 2
+      };
+
+      const coordinateArr = [
+        { x: 2, y: 3 },
+        { x: 0, y: 0 }
+      ];
+
+      const result = coordinateUtil.arrayIncludesCoordinate(coordinate, coordinateArr);
+
+      expect(result).toBeFalsy();
+    });
+  });
+
+  describe('areCoordinatesBounds', () => {
+    it('should return true if coordinates are within bounds', () => {
+      const bounds = {
+        x: 2,
+        y: 2
+      };
+
+      const coordinates = {
+        x: 1,
+        y: 0
+      };
+
+      const result = coordinateUtil.areCoordinatesWithinBounds(coordinates, bounds);
+      expect(result).toBeTruthy();
+    });
+
+    it('should return false if coordinates are not within bounds', () => {
+      const bounds = {
+        x: 2,
+        y: 2
+      };
+
+      const coordinates = {
+        x: 3,
+        y: 4
+      };
+
+      const result = coordinateUtil.areCoordinatesWithinBounds(coordinates, bounds);
+      expect(result).toBeFalsy();
+    });
+
+    it('should return false if any of the coordinates are not provided', () => {
+      const coordinates = {
+        x: 3,
+        y: 4
+      };
+
+      const result = coordinateUtil.areCoordinatesWithinBounds(coordinates);
+      expect(result).toBeFalsy();
+    });
+
+    it('should return true if coordinates are within mininimum bounds', () => {
+      const coordinates = {
+        x: 1,
+        y: 0
+      };
+
+      const bounds = {
+        x: 3,
+        y: 4
+      };
+
+      const result = coordinateUtil.areCoordinatesWithinBounds(coordinates, bounds);
+      expect(result).toBeTruthy();
+    });
+
+    it('should return false if coordinates are not within mininimum bounds', () => {
+      const coordinates = {
+        x: -1,
+        y: 0
+      };
+
+      const bounds = {
+        x: 3,
+        y: 4
+      };
+
+      const result = coordinateUtil.areCoordinatesWithinBounds(coordinates, bounds);
+      expect(result).toBeFalsy();
+    });
+  });
 });
