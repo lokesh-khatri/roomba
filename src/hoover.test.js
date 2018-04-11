@@ -1,4 +1,4 @@
-const moveRoomba = require('./moveRoomba');
+const hoover = require('./hoover');
 
 const getSampleData = () => {
   return {
@@ -18,13 +18,13 @@ const getSampleData = () => {
   };
 };
 
-describe('moveRoomba', () => {
+describe('hoover', () => {
   it('should return object with final roomba position', () => {
     const sampleData = getSampleData();
     sampleData.navigate = 'NNNEES';
 
 
-    const result = moveRoomba(sampleData);
+    const result = hoover(sampleData);
 
     expect(result.roombaPosition).toEqual({
       x: 3,
@@ -40,7 +40,7 @@ describe('moveRoomba', () => {
       y: 5
     };
 
-    const result = moveRoomba(sampleData);
+    const result = hoover(sampleData);
 
     expect(result.roombaPosition).toEqual({
       x: 0,
@@ -49,7 +49,7 @@ describe('moveRoomba', () => {
   });
 
   it('should return object with number of patches of dirt cleaned', () => {
-    const result = moveRoomba(getSampleData());
+    const result = hoover(getSampleData());
 
     expect(result.numCleanedDirtPatches).toEqual(2);
   });
