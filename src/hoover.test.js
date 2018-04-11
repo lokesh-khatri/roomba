@@ -53,4 +53,13 @@ describe('hoover', () => {
 
     expect(result.numCleanedDirtPatches).toEqual(2);
   });
+
+  it('should return object with number of patches of dirt cleaned only once', () => {
+    const sampleData = getSampleData();
+    sampleData.navigate = 'ENSNENW';
+
+    const result = hoover(sampleData);
+
+    expect(result.numCleanedDirtPatches).toEqual(2);
+  });
 });

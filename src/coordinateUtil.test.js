@@ -78,6 +78,26 @@ describe('coordinateUtil', () => {
     });
   });
 
+  describe('removeCoordinateFromArray', () => {
+    it('should remove coordinate from given array', () => {
+      const coordinate = {
+        x: 1,
+        y: 2
+      };
+
+      const coordinateArr = [
+        { x: 2, y: 3 },
+        { x: 1, y: 2 }
+      ];
+
+      const result = coordinateUtil.removeCoordinateFromArray(coordinate, coordinateArr);
+
+      expect(
+        coordinateUtil.arrayIncludesCoordinate(coordinate, result)
+      ).toBeFalsy();
+    });
+  });
+
   describe('areCoordinatesBounds', () => {
     it('should return true if coordinates are within bounds', () => {
       const bounds = {

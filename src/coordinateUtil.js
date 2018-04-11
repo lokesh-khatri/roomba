@@ -13,6 +13,10 @@ function extractCoordinatesFromString(_) {
   }
 }
 
+function removeCoordinateFromArray({ x, y }, _arr) {
+  return _arr.filter(coordinate => !(x === coordinate.x && y === coordinate.y));
+}
+
 function sumCoordinates(currentCoordinates, coordinatesToSum) {
   return {
     x: currentCoordinates.x + coordinatesToSum.x,
@@ -42,5 +46,6 @@ module.exports = {
   extractCoordinatesFromString,
   areCoordinatesWithinBounds,
   sumCoordinates,
-  arrayIncludesCoordinate
+  arrayIncludesCoordinate,
+  removeCoordinateFromArray
 };

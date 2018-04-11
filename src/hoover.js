@@ -11,6 +11,8 @@ function moveRoomba(movementDirection, roombaObject) {
 
   if (coordinateUtil.arrayIncludesCoordinate(roombaObject.roombaPosition, roombaObject.dirtPatches)) {
     roombaObject.numCleanedDirtPatches++;
+    roombaObject.dirtPatches =
+      coordinateUtil.removeCoordinateFromArray(roombaObject.roombaPosition, roombaObject.dirtPatches);
   }
 }
 
